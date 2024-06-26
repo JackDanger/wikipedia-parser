@@ -4,13 +4,13 @@ Tools to turn the wikipedia archive xml files into usable NLP inputs.
 
 ## Usage
 
-```
-# Get the wikipedia data dump of your choice from here:
-# https://meta.wikimedia.org/wiki/Data_dump_torrents#English_Wikipedia
-#
-# Then bunzip2 the file into a DOWNLOAD_DIR of your choice until it absolutely
-# wrecks your filesystem with an XML file for each article.
+Get the wikipedia data dump of your choice from here:
+https://meta.wikimedia.org/wiki/Data_dump_torrents#English_Wikipedia
 
+Then bunzip2 the file into a DOWNLOAD_DIR of your choice until it absolutely
+wrecks your filesystem with an XML file for each article.
+
+```
 python ./textualize.py DOWNLOAD_DIR OUTPUT_DIR
 ```
 
