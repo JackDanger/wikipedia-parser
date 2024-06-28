@@ -74,20 +74,19 @@ def process(src, dst):
         with open(dst, 'wb') as g:
 
             bzip_reader = bz2.BZ2File(f, 'rb')
-            bzip_writer = bz2.BZ2File(g, 'wb')
             
             with tqdm.tqdm(total=os.path.getsize(src), unit='M', unit_scale=True) as pbar:
 
                 def write(title, text):
                     plain = textualize.wikitext_to_plain(title, text)
-                    written = bzip_writer.write(plain.encode('utf-8'))
-                    pbar.update(written)
+                    f.write(plain.encode('utf-8'))
 
                 parser = xml.sax.make_parser()
                 parser.setContentHandler(WikiReader(lambda ns: ns == 0, write))
 
                 for chunk in bzip_reader:
                     parser.feed(chunk)
+                    pbar.update(len(chunk))
 
 
 if __name__ == '__main__':
